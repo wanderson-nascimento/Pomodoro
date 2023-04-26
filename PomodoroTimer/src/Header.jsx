@@ -1,11 +1,11 @@
 //import { useState } from 'react'
-
+import './App.css'
 
 function Header() {
 
   return (
     <>
-      <div>
+      <div className="header">
         <ul>
             <li>PomoFocus</li>
             <li>

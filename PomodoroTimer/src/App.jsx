@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>     
-        <Header className=""/>
+      <Header/>
       <div className="central">
         <div className="options">
           <ul>
@@ -28,10 +28,10 @@ function App() {
             </li>
           </ul>
         </div>
-        <div>
+        <div className="timer">
           <p>25:00</p>
         </div>
-        <div>
+        <div className="functions">
           <button>PAUSAR</button>
           <button>SKIP</button>
         </div>
