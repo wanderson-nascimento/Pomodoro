@@ -1,9 +1,9 @@
 //import { useState } from 'react'
 import Header from "./Header"
+import Timer from "./Timer"
 import './App.css'
 
 function App() {
-  //const [count, setCount] = useState(0)
 
   return (
     <>     
@@ -29,7 +29,7 @@ function App() {
           </ul>
         </div>
         <div className="timer">
-          25:00
+          <Timer/>
         </div>
         <div className="functions">
           <button>PAUSAR</button>
