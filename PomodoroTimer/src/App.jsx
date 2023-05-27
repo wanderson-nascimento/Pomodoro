@@ -29,7 +29,7 @@ function App() {
           </ul>
         </div>
         <div className="timer">
-          <p>25:00</p>
+          25:00
         </div>
         <div className="functions">
           <button>PAUSAR</button>

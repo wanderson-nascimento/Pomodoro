@@ -10,13 +10,18 @@
 
 
 .header{
+  width: 100%;
+  margin-bottom: 30px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .central{
+  max-width: 500px;
+  max-height: 400px;
+  margin: auto;
   background-color: rgb(255, 255, 255, 0.15);
-  margin: 50px;
   padding: 10px;
   border-radius: 10px;
 }
@@ -36,10 +41,10 @@ button{
 }
 
 .timer{
-  display: flex;
-  justify-content: center;
-  margin: auto;
-  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: block;
+  text-align: center;
   font-size: 120px;
   font-weight: bold;
 }
