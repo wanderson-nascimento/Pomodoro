@@ -18,7 +18,7 @@ function Timer() {
 
     },[])
 
-    const minutosDisplay = String(Math.ceil(segundos / 60)).padStart(2, '0');
+    const minutosDisplay = String(Math.floor(segundos / 60)).padStart(2, '0');
     const segundosDisplay = String(Math.ceil(segundos % 60)).padStart(2, '0');
 
 
