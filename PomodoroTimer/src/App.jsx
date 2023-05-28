@@ -1,13 +1,18 @@
-//import { useState } from 'react'
+import { useState } from 'react'
 import Header from "./Header"
 import Timer from "./Timer"
 import './App.css'
 
 function App() {
+  const [isPausado, setIsPausado] = useState(false);
+
+  function handleClick() {
+    setIsPausado(prevIsPausado => !prevIsPausado);
+  }
 
   return (
-    <>     
-      <Header/>
+    <>
+      <Header />
       <div className="central">
         <div className="options">
           <ul>
@@ -29,15 +34,15 @@ function App() {
           </ul>
         </div>
         <div className="timer">
-          <Timer/>
+          <Timer isPausado={isPausado} />
         </div>
         <div className="functions">
-          <button>PAUSAR</button>
+          {isPausado ? <button onClick={handleClick}>COMEÇAR</button> : <button onClick={handleClick}>PAUSAR</button>}
           <button>SKIP</button>
         </div>
       </div>
       <div>
-      </div>  
+      </div>
     </>
   )
 }
