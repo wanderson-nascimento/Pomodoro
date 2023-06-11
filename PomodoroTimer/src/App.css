@@ -3,7 +3,6 @@
   top: 0px;
   width: 100%;
   left: auto;
-  background-color: rgb(186, 73, 73);
   color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
   min-height: 100vh;
@@ -55,3 +54,4 @@ ul{
   display: flex;
   justify-content: center;
 }
+
