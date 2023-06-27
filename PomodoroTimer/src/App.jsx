@@ -70,7 +70,7 @@ function App() {
           </ul>
         </div>
         <div className="timer">
-          <Timer isPausado={isPausado} isPomodoro={isPomodoro} isPausaCurta={isPausaCurta} isPausaLonga={isPausaLonga} handleClick={handleClick}/>
+          <Timer isPausado={isPausado} isPomodoro={isPomodoro} isPausaCurta={isPausaCurta} isPausaLonga={isPausaLonga} handleClick={handleClick} handlePausaCurta={handlePausaCurta}/>
         </div>
         <div className="functions">
           {isPausado ? <button onClick={handleClick}>COMEÇAR</button> : <button onClick={handleClick}>PAUSAR</button>}
