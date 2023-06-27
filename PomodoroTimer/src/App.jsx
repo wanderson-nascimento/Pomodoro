@@ -4,7 +4,7 @@ import Timer from "./Timer"
 import './App.css'
 
 function App() {
-  const [isPausado, setIsPausado] = useState(false);
+  const [isPausado, setIsPausado] = useState(true);
   const [isPomodoro, setIsPomodoro] = useState(false);
   const [isPausaCurta, setIsPausaCurta] = useState(false);
   const [isPausaLonga, setIsPausaLonga] = useState(false);

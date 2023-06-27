@@ -1,10 +1,9 @@
-import { useEffect } from 'react';
-import { useState } from 'react'
+import { useEffect, useState} from 'react';
 import './App.css'
 import sound from '/assets/sound.wav'
 
 function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick }) {
-    const [segundos, setSegundos] = useState(1500);
+    const [segundos, setSegundos] = useState(1500); 
 
     function play() {
         new Audio(sound).play();
@@ -25,12 +24,13 @@ function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick 
 
     useEffect(() => {
         if (isPomodoro) {
-            setSegundos(1500);
+            setSegundos(1500); 
         }
     }, [isPomodoro]);
 
     useEffect(() => {
         if (segundos <= 0) {
+            play();
             handleClick();
         }
     }, [segundos])
@@ -41,7 +41,7 @@ function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick 
             if (!isPausado && segundos > 0) {
                 setSegundos(prevSegundos => prevSegundos - 1)
             }
-        }, 1);
+        }, 1000);
 
         return () => {
             clearInterval(interval);
@@ -58,9 +58,6 @@ function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick 
             <div className="timer">
                 <div>
                     {minutosDisplay}:{segundosDisplay}
-                </div>
-                <div>
-                    <button onClick={play}>Clique para reproduzir</button>
                 </div>
             </div>
         </>
