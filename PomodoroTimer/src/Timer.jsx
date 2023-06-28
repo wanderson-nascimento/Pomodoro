@@ -2,7 +2,7 @@ import { useEffect, useState} from 'react';
 import './App.css'
 import sound from '/assets/sound.wav'
 
-function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick, handlePausaCurta }) {
+function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick, handlePausaCurta, handleContador }) {
     const [segundos, setSegundos] = useState(5); 
 
     function play() {
@@ -32,6 +32,7 @@ function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick,
             play();
             handleClick();
             handlePausaCurta();
+            handleContador();
         }
     }, [segundos])
 

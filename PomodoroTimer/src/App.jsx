@@ -1,87 +1,104 @@
-import { useState, useEffect } from 'react'
-import Header from "./Header"
-import Timer from "./Timer"
-import './App.css'
+import { useState, useEffect } from "react";
+import Header from "./Header";
+import Timer from "./Timer";
+import TaskList from "./TaskList";
+import "./App.css";
 
 function App() {
   const [isPausado, setIsPausado] = useState(true);
   const [isPomodoro, setIsPomodoro] = useState(false);
   const [isPausaCurta, setIsPausaCurta] = useState(false);
   const [isPausaLonga, setIsPausaLonga] = useState(false);
-
+  const [contadorDePomodoros, setContadorDePomodoros] = useState(0);
 
   function handleClick() {
-    setIsPausado(prevIsPausado => !prevIsPausado);
+    setIsPausado((prevIsPausado) => !prevIsPausado);
   }
 
-  function handlePomodoro(){
+  function handleContador() {
+    if (isPomodoro == true) {
+      setContadorDePomodoros(
+        (prevContadorDePomodoros) => prevContadorDePomodoros + 1
+      );
+    }
+  }
+
+  function handlePomodoro() {
     setIsPomodoro(true);
     setIsPausado(true);
     setIsPausaCurta(false);
     setIsPausaLonga(false);
   }
 
-  function handlePausaCurta(){
+  function handlePausaCurta() {
     setIsPausaCurta(true);
     setIsPausado(true);
     setIsPomodoro(false);
     setIsPausaLonga(false);
   }
 
-  function handlePausalonga(){
+  function handlePausalonga() {
     setIsPausaLonga(true);
     setIsPausado(true);
     setIsPausaCurta(false);
     setIsPomodoro(false);
   }
 
+  //
+  let backgroundColor = "rgb(186, 73, 73)"; // Cor vermelho padrão
 
-  // 
-    let backgroundColor = 'rgb(186, 73, 73)'; // Cor vermelho padrão
-
-    if (isPausaCurta) {
-      backgroundColor = 'rgb(56, 133, 138)'; // Cor azul claro para pausa curta
-    } else if (isPausaLonga) {
-      backgroundColor = 'rgb(57, 112, 151)'; // Cor azul escuro para pausa longa
-    }
+  if (isPausaCurta) {
+    backgroundColor = "rgb(56, 133, 138)"; // Cor azul claro para pausa curta
+  } else if (isPausaLonga) {
+    backgroundColor = "rgb(57, 112, 151)"; // Cor azul escuro para pausa longa
+  }
 
   return (
     <>
-    <div style={{backgroundColor}}>
-      <Header />
-      <div className="central" >
-        <div className="options">
-          <ul>
-            <li>
-              <button onClick={handlePomodoro}>
-                Pomodoro 
-              </button>
-            </li>
-            <li>
-              <button onClick={handlePausaCurta}>
-                Pausa curta 
-              </button>
-            </li>
-            <li>
-              <button onClick={handlePausalonga}>
-                Pausa longa
-              </button>
-            </li>
-          </ul>
+      <div style={{ backgroundColor }}>
+        <Header />
+        <title>Teste</title>
+        <div className="central">
+          <div className="options">
+            <ul>
+              <li>
+                <button onClick={handlePomodoro}>Pomodoro</button>
+              </li>
+              <li>
+                <button onClick={handlePausaCurta}>Pausa curta</button>
+              </li>
+              <li>
+                <button onClick={handlePausalonga}>Pausa longa</button>
+              </li>
+            </ul>
+          </div>
+          <div className="timer">
+            <Timer
+              isPausado={isPausado}
+              isPomodoro={isPomodoro}
+              isPausaCurta={isPausaCurta}
+              isPausaLonga={isPausaLonga}
+              handleClick={handleClick}
+              handlePausaCurta={handlePausaCurta}
+              handleContador={handleContador}
+            />
+          </div>
+          <div className="functions">
+            {isPausado ? (
+              <button onClick={handleClick}>COMEÇAR</button>
+            ) : (
+              <button onClick={handleClick}>PAUSAR</button>
+            )}
+            <button>SKIP</button>
+          </div>
         </div>
-        <div className="timer">
-          <Timer isPausado={isPausado} isPomodoro={isPomodoro} isPausaCurta={isPausaCurta} isPausaLonga={isPausaLonga} handleClick={handleClick} handlePausaCurta={handlePausaCurta}/>
+        <div>#{contadorDePomodoros}</div>
+        <div>
+          <TaskList />
         </div>
-        <div className="functions">
-          {isPausado ? <button onClick={handleClick}>COMEÇAR</button> : <button onClick={handleClick}>PAUSAR</button>}
-          <button>SKIP</button>
-        </div>
-      </div>
-      <div>
-      </div>
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
