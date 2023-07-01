@@ -70,6 +70,7 @@ function App() {
     <>
       <div style={{ backgroundColor }} className="principal">
         <Header />
+        <hr></hr>
         <div className="central">
           <div className="options">
             <ul>

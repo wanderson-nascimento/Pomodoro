@@ -23,11 +23,15 @@ function TaskList({
     </li>
   ));
 
+  function handleAddNovaTask(){
+  }
+
   return (
     <>
       <div className="footer">
         <div>
-          Lista de tarefa
+          Lista de tarefa <button className="buttonAddTask" > Adicionar uma nova task </button>
+          <hr></hr>
           <ul className="taskListGeral">{listItems}</ul>
         </div>
       </div>

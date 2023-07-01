@@ -13,10 +13,9 @@
 }
 
 .header{
-  width: 100%;
-  margin-bottom: 10px;
+  margin: auto;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -24,6 +23,7 @@
   max-width: 500px;
   max-height: 400px;
   margin: auto;
+  margin-top: 40px;
   background-color: rgb(255, 255, 255, 0.15);
   padding: 10px;
   border-radius: 10px;
@@ -75,10 +75,21 @@ ul{
   display: flex;
   flex-direction: column;
   padding-inline-start: 0px ;
+  margin-top: 0;
+}
+
+.buttonAddTask{
+  font-family: 'ArialRounded';
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.308);
 }
 
 .taskListElements{
-  padding: 5px;
+  font-family: 'ArialRounded';
+  padding: 10px;
   margin: 5px;
   border-radius: 5px;
   color: black;
