@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   const [isPausado, setIsPausado] = useState(true);
-  const [isPomodoro, setIsPomodoro] = useState(false);
+  const [isPomodoro, setIsPomodoro] = useState(true);
   const [isPausaCurta, setIsPausaCurta] = useState(false);
   const [isPausaLonga, setIsPausaLonga] = useState(false);
   const [contadorDePomodoros, setContadorDePomodoros] = useState(0);
@@ -31,17 +31,25 @@ function App() {
   }
 
   function handlePausaCurta() {
-    setIsPausaCurta(true);
-    setIsPausado(true);
-    setIsPomodoro(false);
-    setIsPausaLonga(false);
+    if (isPomodoro) {
+      setIsPausaCurta(true);
+      setIsPausado(true);
+      setIsPomodoro(false);
+      setIsPausaLonga(false);
+    } else {
+      handlePomodoro();
+    }
   }
 
   function handlePausalonga() {
-    setIsPausaLonga(true);
-    setIsPausado(true);
-    setIsPausaCurta(false);
-    setIsPomodoro(false);
+    if (isPomodoro) {
+      setIsPausaLonga(true);
+      setIsPausado(true);
+      setIsPausaCurta(false);
+      setIsPomodoro(false);
+    } else {
+      handlePomodoro();
+    }
   }
 
   //
@@ -92,7 +100,7 @@ function App() {
             <button>SKIP</button>
           </div>
         </div>
-        <div>#{contadorDePomodoros}</div>
+        <div className="contador">#{contadorDePomodoros}</div>
         <div>
           <TaskList />
         </div>

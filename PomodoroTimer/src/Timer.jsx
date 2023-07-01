@@ -11,13 +11,13 @@ function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick,
 
     useEffect(() => {
         if (isPausaCurta) {
-            setSegundos(300);
+            setSegundos(4);
         }
     }, [isPausaCurta]);
 
     useEffect(() => {
         if (isPausaLonga) {
-            setSegundos(900);
+            setSegundos(6);
         }
     }, [isPausaLonga]);
 
@@ -48,7 +48,7 @@ function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick,
             clearInterval(interval);
         };
 
-    }, [isPausado])
+    }, [isPausado, segundos])
 
     const minutosDisplay = String(Math.floor(segundos / 60)).padStart(2, '0');
     const segundosDisplay = String(Math.ceil(segundos % 60)).padStart(2, '0');
