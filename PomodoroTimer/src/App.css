@@ -1,13 +1,16 @@
 #root{
   position: absolute;
   top: 0px;
-  width: 100%;
   left: auto;
   color: rgb(255, 255, 255);
   font-family: Arial, Helvetica, sans-serif;
-  min-height: 100vh;
+  
 }
 
+.principal{
+  width: 100vw;
+  height: 100vw;
+}
 
 .header{
   width: 100%;
@@ -60,5 +63,11 @@ ul{
   justify-content: center;
   padding: 20px;
   align-items: center;
+}
+
+.taskList{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 

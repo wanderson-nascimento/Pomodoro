@@ -32,7 +32,6 @@ function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick,
             play();
             handleClick();
             handleContador();
-            console.log('useEffect do final do contador')
         }
     }, [segundos])
 

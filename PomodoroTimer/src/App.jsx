@@ -68,9 +68,8 @@ function App() {
 
   return (
     <>
-      <div style={{ backgroundColor }}>
+      <div style={{ backgroundColor }} className="principal">
         <Header />
-        <title>Teste</title>
         <div className="central">
           <div className="options">
             <ul>
@@ -101,7 +100,7 @@ function App() {
             ) : (
               <button onClick={handleClick}>PAUSAR</button>
             )}
-            <button>SKIP</button>
+            <button onClick={handleContador}>PULAR</button> 
           </div>
         </div>
         <div className="contador">#{contadorDePomodoros}</div>
