@@ -2,7 +2,7 @@ import { useEffect, useState} from 'react';
 import './App.css'
 import sound from '/assets/sound.wav'
 
-function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick, handlePausaCurta, handleContador }) {
+function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick, handleContador }) {
     const [segundos, setSegundos] = useState(5); 
 
     function play() {
@@ -31,8 +31,8 @@ function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick,
         if (segundos <= 0) {
             play();
             handleClick();
-            handlePausaCurta();
             handleContador();
+            console.log('useEffect do final do contador')
         }
     }, [segundos])
 
@@ -48,7 +48,7 @@ function Timer({ isPausado, isPomodoro, isPausaCurta, isPausaLonga, handleClick,
             clearInterval(interval);
         };
 
-    }, [isPausado, segundos])
+    }, [isPausado])
 
     const minutosDisplay = String(Math.floor(segundos / 60)).padStart(2, '0');
     const segundosDisplay = String(Math.ceil(segundos % 60)).padStart(2, '0');

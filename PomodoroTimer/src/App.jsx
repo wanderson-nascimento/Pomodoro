@@ -16,14 +16,25 @@ function App() {
   }
 
   function handleContador() {
-    if (isPomodoro == true) {
+    console.log('contador')
+    if (isPomodoro === true) {
       setContadorDePomodoros(
         (prevContadorDePomodoros) => prevContadorDePomodoros + 1
       );
-    }
+      if ((contadorDePomodoros + 1) % 3 === 0) {
+        console.log('multiplo de 3 vai dar em pausa longa')
+        setIsPomodoro(false);
+        handlePausalonga();
+      } else {
+        console.log('Handle em pausa curta')
+        setIsPomodoro(false);
+        handlePausaCurta();
+      }
+    }else handlePomodoro()
   }
 
   function handlePomodoro() {
+    console.log('handle Pomodoro');
     setIsPomodoro(true);
     setIsPausado(true);
     setIsPausaCurta(false);
@@ -31,22 +42,23 @@ function App() {
   }
 
   function handlePausaCurta() {
+    console.log('Pausa Curta: ', isPausaCurta, 'pomodoro: ', isPomodoro, 'pausa longa: ', isPausaLonga, 'pausado: ', isPausado);
     if (isPomodoro) {
       setIsPausaCurta(true);
       setIsPausado(true);
-      setIsPomodoro(false);
       setIsPausaLonga(false);
+      console.log('trocou os estados');
     } else {
       handlePomodoro();
     }
   }
 
   function handlePausalonga() {
+    console.log('Pausa Longa');
     if (isPomodoro) {
       setIsPausaLonga(true);
       setIsPausado(true);
       setIsPausaCurta(false);
-      setIsPomodoro(false);
     } else {
       handlePomodoro();
     }
@@ -87,7 +99,6 @@ function App() {
               isPausaCurta={isPausaCurta}
               isPausaLonga={isPausaLonga}
               handleClick={handleClick}
-              handlePausaCurta={handlePausaCurta}
               handleContador={handleContador}
             />
           </div>
