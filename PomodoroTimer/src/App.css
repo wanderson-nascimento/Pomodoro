@@ -61,13 +61,28 @@ ul{
 .contador{
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding-top: 10px;
   align-items: center;
 }
-
-.taskList{
-  padding: 20px;
-  display: flex;
-  justify-content: center;
+.footer{
+  max-width: 530px;
+  max-height: 430px;
+  margin: auto;
+  padding: 2px;
 }
 
+.taskListGeral{
+  display: flex;
+  flex-direction: column;
+  padding-inline-start: 0px ;
+}
+
+.taskListElements{
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.726);
+  display: flex;
+  justify-content: space-between;
+}
