@@ -4,38 +4,31 @@ import JanelaDePreenchimento from "./JanelaDePreenchimento.jsx";
 
 function TaskList() {
   const [isJanelaDePreenchimento, setIsJanelaDePreenchimento] = useState(false);
-  const [listaDeAtividades, setListaDeAtividades] = useState([
-    "Fazer compras",
-    "Estudar JavaScript",
-    "Lavar o carro",
-    "Preparar o jantar",
-    "Fazer exercícios",
-  ]);
+
 
   const [listaDeAtividadesObj, setListaDeAtividadesObj] = useState([
     {
       taskName: "Fazer umas compras loucas",
-      estado: true,
+      isComplete: false,
       quantidadeDePomodoros: 3,
       quantidadeDePomodorosOriginal: 4
     },
     {
       taskName: "Estudar cripto",
-      estado: true,
+      isComplete: true,
       quantidadeDePomodoros: 2,
       quantidadeDePomodorosOriginal: 4
     },
   ]);
 
-  let listItems = listaDeAtividades.map((Atividade) => (
-    <li className="taskListElements" key={Atividade}>
-      {Atividade} <input type="checkbox" />{" "}
-    </li>
-  ));
+  const listaDeAtividadesAtivos = listaDeAtividadesObj.filter(listaDeAtividadesObj => listaDeAtividadesObj.isComplete == false)
+
+  const listaDeAtividadesInativos = listaDeAtividadesObj.filter(listaDeAtividadesObj => listaDeAtividadesObj.isComplete == true)
+
 
   const ComplexList = () => (
     <ul className="taskListGeral">
-      {listaDeAtividadesObj.map((item) => (
+      {listaDeAtividadesAtivos.map((item) => (
         <li className="taskListElements" key={item.taskName}>
            {item.taskName}  
            <input type="checkbox"
@@ -43,6 +36,18 @@ function TaskList() {
         </li>
       ))}
     </ul>
+  );
+
+  const TarefasConcluidas = () =>(
+    <ul className="taskListGeral">
+    {listaDeAtividadesInativos.map((item) => (
+      <li className="taskListElementsInactive" key={item.taskName}>
+         {item.taskName}  
+         <input type="checkbox"
+          />
+      </li>
+    ))}
+  </ul>
   );
 
   function handleAddNovaTask() {
@@ -54,8 +59,14 @@ function TaskList() {
   }
 
   function handleSubmit(data) {
-    setListaDeAtividades([data, ...listaDeAtividades]);
-    console.log(listaDeAtividades);
+    const dataObj = {
+      taskName: data,
+      isComplete: false,
+      quantidadeDePomodoros: 1,
+      quantidadeDePomodorosOriginal: 1
+    }
+    setListaDeAtividadesObj([dataObj, ...listaDeAtividadesObj]);
+    console.log(listaDeAtividadesObj);
   }
 
   return (
@@ -77,6 +88,11 @@ function TaskList() {
           <hr></hr>
           <div>
             <ComplexList/>
+          </div>
+          <div>
+            Tarefas concluídas
+            <hr></hr>
+            <TarefasConcluidas/>
           </div>
         </div>
       </div>

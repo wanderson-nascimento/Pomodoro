@@ -7,6 +7,7 @@ function JanelaDePreenchimento({ sendDataToParent, fecharModal }) {
   function handleSubmit(e) {
     e.preventDefault();
     sendDataToParent(atividadeNova);
+    fecharModal();
   }
 
   return (
