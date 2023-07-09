@@ -3,52 +3,79 @@ import "./App.css";
 import JanelaDePreenchimento from "./JanelaDePreenchimento.jsx";
 
 function TaskList() {
+  //Definição de veriáveis iniciais
   const [isJanelaDePreenchimento, setIsJanelaDePreenchimento] = useState(false);
-
 
   const [listaDeAtividadesObj, setListaDeAtividadesObj] = useState([
     {
+      id: 0,
       taskName: "Fazer umas compras loucas",
       isComplete: false,
       quantidadeDePomodoros: 3,
-      quantidadeDePomodorosOriginal: 4
+      quantidadeDePomodorosOriginal: 4,
     },
     {
+      id: 1,
       taskName: "Estudar cripto",
       isComplete: true,
       quantidadeDePomodoros: 2,
-      quantidadeDePomodorosOriginal: 4
+      quantidadeDePomodorosOriginal: 4,
     },
   ]);
 
-  const listaDeAtividadesAtivos = listaDeAtividadesObj.filter(listaDeAtividadesObj => listaDeAtividadesObj.isComplete == false)
+  //Filtros das listas de tarefas
+  const listaDeAtividadesAtivos = listaDeAtividadesObj.filter(
+    (listaDeAtividadesObj) => listaDeAtividadesObj.isComplete == false
+  );
 
-  const listaDeAtividadesInativos = listaDeAtividadesObj.filter(listaDeAtividadesObj => listaDeAtividadesObj.isComplete == true)
+  const listaDeAtividadesInativos = listaDeAtividadesObj.filter(
+    (listaDeAtividadesObj) => listaDeAtividadesObj.isComplete == true
+  );
 
-
+  //Renderização das diferentes listas
   const ComplexList = () => (
     <ul className="taskListGeral">
       {listaDeAtividadesAtivos.map((item) => (
-        <li className="taskListElements" key={item.taskName}>
-           {item.taskName}  
-           <input type="checkbox"
-            />
+        <li className="taskListElements" key={item.id}>
+          {item.taskName}
+          <input
+            type="checkbox"
+            defaultChecked={item.isComplete}
+            onChange={() => handleCheckboxChange(item.id)}
+          />
         </li>
       ))}
     </ul>
   );
 
-  const TarefasConcluidas = () =>(
+  const TarefasConcluidas = () => (
     <ul className="taskListGeral">
-    {listaDeAtividadesInativos.map((item) => (
-      <li className="taskListElementsInactive" key={item.taskName}>
-         {item.taskName}  
-         <input type="checkbox"
+      {listaDeAtividadesInativos.map((item) => (
+        <li className="taskListElementsInactive" key={item.id}>
+          {item.taskName}
+          <input
+            type="checkbox"
+            defaultChecked={item.isComplete}
+            onChange={() => handleCheckboxChange(item.id)}
           />
-      </li>
-    ))}
-  </ul>
+        </li>
+      ))}
+    </ul>
   );
+
+  //Funções para lidar com eventos
+
+  function handleCheckboxChange(taskId) {
+    setListaDeAtividadesObj((prevList) =>
+      prevList.map((item) => {
+        if (item.id === taskId) {
+          return { ...item, isComplete: !item.isComplete };
+        }
+        return item;
+      })
+    );
+    console.log('Depois da modificação', listaDeAtividadesObj)
+  }
 
   function handleAddNovaTask() {
     setIsJanelaDePreenchimento(!isJanelaDePreenchimento);
@@ -60,13 +87,13 @@ function TaskList() {
 
   function handleSubmit(data) {
     const dataObj = {
+      id: listaDeAtividadesObj.length,
       taskName: data,
       isComplete: false,
       quantidadeDePomodoros: 1,
-      quantidadeDePomodorosOriginal: 1
-    }
-    setListaDeAtividadesObj([dataObj, ...listaDeAtividadesObj]);
-    console.log(listaDeAtividadesObj);
+      quantidadeDePomodorosOriginal: 1,
+    };
+    setListaDeAtividadesObj([...listaDeAtividadesObj, dataObj]); //O item adicionado está por último, mas é necessário ajustar
   }
 
   return (
@@ -87,12 +114,12 @@ function TaskList() {
           </div>
           <hr></hr>
           <div>
-            <ComplexList/>
+            <ComplexList />
           </div>
           <div>
             Tarefas concluídas
             <hr></hr>
-            <TarefasConcluidas/>
+            <TarefasConcluidas />
           </div>
         </div>
       </div>
